@@ -25,4 +25,23 @@ Route::get('register', 'CustomAuth\CustomRegistrationController@showRegistration
 Route::post('register', 'CustomAuth\CustomRegistrationController@register')
     ->name('register');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('home', 'HomeController@index')->name('index');
+
+Route::get('sucursal/{idSucursal}',[
+	'uses'=> 'HomeController@showById'
+])->name('home');
+
+Route::get('sucursal/{idSucursal}/producto/{idProducto}',[
+	'as'=>'producto-detalles',
+	'uses'=>'HomeController@showProduct'
+]);
+
+Route::get('carritoShow/agregar/{idSucursal}/{idProducto}',[
+    'as'=>'carrito-agregar',
+    'uses'=>'CarritoController@add'
+]);
+
+Route::get('carritoShow/',[
+    'as'=>'carrito',
+    'uses'=>'CarritoController@show'
+]);

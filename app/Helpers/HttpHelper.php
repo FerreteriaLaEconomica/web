@@ -53,7 +53,7 @@ class HttpHelper {
             ],
         ]);
         $body = json_decode($response->getBody());
-        return $body->data;
+        return $response;
     }
 
     /**

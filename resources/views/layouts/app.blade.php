@@ -33,12 +33,27 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                        @if( ! empty($sucursales))
+                            <li class="nav-item dropdown">
+                                <a id="sucursalesNavbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Sucursales <span class="caret"></span>
+                                </a>
 
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sucursalesNavbarDropdown">
+                                    @foreach($sucursales as $sucursal)
+                                        <a class="dropdown-item" href="{{ route('home', ['idSucursal' => $sucursal['id']]) }}">
+                                            {{ $sucursal['nombre'] }}
+                                        </a>
+                                    @endforeach
+                                </div>
+                            </li>
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        <a class="nav-link" href="#">Conócenos</a>
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -49,6 +64,7 @@
                                 @endif
                             </li>
                         @else
+                            <a class="nav-link" href="{{route('carrito')}}">Carrito</a>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->nombre }} <span class="caret"></span>

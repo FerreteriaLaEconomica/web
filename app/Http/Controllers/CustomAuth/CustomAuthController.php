@@ -67,7 +67,7 @@ class CustomAuthController extends Controller {
         }
         //login success - redirect to home page
         //$this->resetThrottleValue("login", $this->generateLoginThrottleHash($request));
-        return redirect()->route('home');//->action("HomeController@home");
+        return redirect()->action("HomeController@index");
     }
 
     /**
