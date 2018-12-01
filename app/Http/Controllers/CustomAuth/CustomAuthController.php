@@ -25,6 +25,10 @@ class CustomAuthController extends Controller {
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function showLoginForm(Request $request) {
+        if ($request->session()->get('auth_token') !== null) {
+            $user = $request->session()->get('user');
+            Auth::login($user);
+        }
         return view('auth.login');
     }
     /**

@@ -32,7 +32,7 @@
                         <td>
                             <input type="number" min="1" max="100" value="{{$item['cantidad']}}" id="producto_{{$item['id_producto']}}">
 
-                            <a href="#" class="btn btn-warning btn-update-item" data-href="{{route('login', $item['id_producto'])}}" data-id="{{$item['id_producto']}}">
+                            <a href="#" class="btn btn-warning btn-update-item" data-href="{{route('carrito-actualizar', $item['id'])}}" data-id="{{$item['id_producto']}}">
                                 <i class="fa fa-refresh"></i></a>
                         </td>
                         <td>{{number_format($item['precio'] * $item['cantidad'], 2)}}</td>

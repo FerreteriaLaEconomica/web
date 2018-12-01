@@ -4,6 +4,7 @@ namespace App\Http\Controllers\CustomAuth;
 use App\Helpers\HttpHelper;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 use Laravolt\Avatar\Facade as Avatar;
 
@@ -22,7 +23,11 @@ class CustomRegistrationController extends Controller {
      * Show registration form
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function showRegistrationForm() {
+    public function showRegistrationForm(Request $request) {
+        if ($request->session()->get('auth_token') !== null) {
+            $user = $request->session()->get('user');
+            Auth::login($user);
+        }
         return view("auth.register");
     }
 

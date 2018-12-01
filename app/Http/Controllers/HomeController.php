@@ -30,10 +30,14 @@ class HomeController extends Controller {
     }
 
     public function showProduct(Request $request, $idSucursal, $idProducto) {
+        if ($request->session()->get('auth_token') !== null) {
+            $user = $request->session()->get('user');
+            Auth::login($user);
+        }
         $productosResponse = $this->httpHelper->get("sucursales/".$idSucursal.'/productos/'.$idProducto);
         $producto = $productosResponse->json();
         //return redirect()->route('home', ['idSucursal' => 1]);
-        return view('producto-detalles',compact('producto'));
+        return view('producto-detalles', compact('producto'));
     }
 
     public function showById(Request $request, $idSucursal) {

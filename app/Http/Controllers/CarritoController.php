@@ -23,6 +23,14 @@ class CarritoController extends Controller {
         return view('carrito', compact('carrito', 'total'));
     }
 
+    public function update(Request $request, $id, $cantidad){
+        $carrito=\Session::get('carrito');
+        $carrito[$id]['cantidad'] = $cantidad;
+        \Session::put('carrito', $carrito);
+
+        return redirect()->route('carrito');
+    }
+
     public function add(Request $request, $idSucursal, $idProducto){
         $carrito = \Session::get('carrito');
 
@@ -53,7 +61,7 @@ class CarritoController extends Controller {
         $carrito = \Session::get('carrito');
         $total = 0;
         foreach($carrito as $item){
-            $total += $item['precio'] * 1;//$item->cantidad;
+            $total += $item['precio'] * $item['cantidad'];
         }
 
         return $total;

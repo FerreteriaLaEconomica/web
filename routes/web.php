@@ -45,3 +45,8 @@ Route::get('carritoShow/',[
     'as'=>'carrito',
     'uses'=>'CarritoController@show'
 ]);
+
+Route::get('carrito/actualizar/{id}/{cantidad?}',[
+    'as'=>'carrito-actualizar',
+    'uses'=>'CarritoController@update'
+]);
