@@ -19,7 +19,11 @@
                         <th>Cantidad</th>
                         <th>Precio Total</th>
                         <th>Eliminar</th>
-                        <th><a href="{{route('login')}}"><i class="fa fa-trash-o fa-3x"></i>Vaciar</a></th>
+                        <th>
+                            <a href="{{route('carrito-vaciar')}}" class="btn btn-danger">
+                                <i class="fa fa-trash-o fa-3x"></i>Vaciar
+                            </a>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,10 +37,14 @@
                             <input type="number" min="1" max="100" value="{{$item['cantidad']}}" id="producto_{{$item['id_producto']}}">
 
                             <a href="#" class="btn btn-warning btn-update-item" data-href="{{route('carrito-actualizar', $item['id'])}}" data-id="{{$item['id_producto']}}">
-                                <i class="fa fa-refresh"></i></a>
+                                <i class="fa fa-sync-alt"></i></a>
                         </td>
                         <td>{{number_format($item['precio'] * $item['cantidad'], 2)}}</td>
-                        <td><a href="{{route('login', $item['id_producto'])}}" class="btn btn-danger"><i class="fa fa-remove"></i></a></td>
+                        <td>
+                            <a href="{{route('carrito-borrar', $item['id'])}}" class="btn btn-danger">
+                                <i class="fa fa-trash-alt"></i>
+                            </a>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -52,7 +60,7 @@
         <hr>
         <p>
             <a href="{{route('index')}}" class="btn btn-primary"><i class="fa fa-chevron-circle-left"></i> Seguir comprando</a>
-            <a href="{{route('login')}}" class="btn btn-warning">Continuar <i class="fa fa-chevron-circle-right"></i></a>
+            <a href="{{route('orden-detalle')}}" class="btn btn-warning">Continuar <i class="fa fa-chevron-circle-right"></i></a>
         </p>
     </div>
 </div>

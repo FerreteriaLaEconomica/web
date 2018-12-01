@@ -50,3 +50,19 @@ Route::get('carrito/actualizar/{id}/{cantidad?}',[
     'as'=>'carrito-actualizar',
     'uses'=>'CarritoController@update'
 ]);
+
+Route::get('carritoShow/borrar/{id}',[
+    'as'=>'carrito-borrar',
+    'uses'=>'CarritoController@remove'
+]);
+
+Route::get('eliminarTodo/',[
+    'as'=>'carrito-vaciar',
+    'uses'=>'CarritoController@removeAll'
+]);
+
+Route::get('orden-detalle',[
+    'middleware'=>'custom.auth',
+    'as'=>'orden-detalle',
+    'uses'=>'CarritoController@ordenDetalle'
+]);

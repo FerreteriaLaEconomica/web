@@ -23,6 +23,19 @@ class CarritoController extends Controller {
         return view('carrito', compact('carrito', 'total'));
     }
 
+    public function remove(Request $request, $id){
+        $carrito=\Session::get('carrito');
+        unset($carrito[$id]);
+        \Session::put('carrito', $carrito);
+        \Session::get('carrito');
+        return redirect()->route('carrito');
+    }
+
+    public function removeAll(){
+        \Session::forget('carrito');
+        return redirect()->route('carrito');
+    }
+
     public function update(Request $request, $id, $cantidad){
         $carrito=\Session::get('carrito');
         $carrito[$id]['cantidad'] = $cantidad;
@@ -65,5 +78,19 @@ class CarritoController extends Controller {
         }
 
         return $total;
+    }
+
+    public function ordenDetalle(Request $request){
+        if ($request->session()->get('auth_token') !== null) {
+            $user = $request->session()->get('user');
+            Auth::login($user);
+        }
+        if(count(\Session::get('carrito'))<=0) return redirect()->route('/');
+        $carrito = \Session::get('carrito');
+//        dd($carrito);
+        $total = $this->total();
+//        dd($total);
+
+        return view('orden-detalle', compact('carrito', 'total'));
     }
 }
