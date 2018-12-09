@@ -52,6 +52,19 @@ class HttpHelper {
         return $response;
     }
 
+    public function putAuth($endpoint, $array, $token) {
+        $response = $this->guzzle->put($this->cleanEndpoint($endpoint), [
+            'headers' => [
+                'Content-Type' => 'application/json; charset=UTF8',
+                'timeout' => 10,
+                'Authorization' => 'Bearer '.$token,
+            ],
+            'json' => $array
+        ]);
+        //$body = json_decode($response->getBody());
+        return $response;
+    }
+
     /**
     * @param $endpoint
     * @param int $page

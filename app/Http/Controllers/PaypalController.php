@@ -189,6 +189,10 @@ class PaypalController extends Controller {
         Orden::find($orderId)->update([
             'estado_orden' => 'PAGADO'
         ]);
+        $req = array();
+        $req['id_orden'] = $orderId;
+        $ventaResponse = $this->httpHelper->putAuth("ventas", $req, $this->token);
+        $venta = $ventaResponse->json();
     }
 
     private function saveOrder($carrito) {
