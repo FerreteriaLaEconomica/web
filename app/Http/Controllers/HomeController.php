@@ -112,7 +112,7 @@ class HomeController extends Controller {
         $collection = new Collection($productos);
         $collection = $collection->filter(function ($value, $key) use ($categoria) {
             if ($categoria == 'Descuentos' && $value['producto']['porcentaje_descuento'] > 0) {
-                return true;
+                return $value['cantidad'] > 0;
             }
 
             $validCategory = $value['producto']['categoria'] == $categoria;

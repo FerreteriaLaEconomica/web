@@ -23,10 +23,12 @@ use PayPal\Api\Transaction;
 use App\Orden;
 use App\OrdenItem;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Log;
 
 class PaypalController extends Controller {
     private $_api_context;
     private $httpHelper;
+    private $token;
 
     public function __construct() {
         $this->middleware('custom.auth');
@@ -37,7 +39,8 @@ class PaypalController extends Controller {
         $this->_api_context->setConfig($paypal_conf['settings']);
     }
 
-    public function postPayment() {
+    public function postPayment(Request $request) {
+        $this->token = $request->session()->get('auth_token');
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
 
@@ -190,10 +193,30 @@ class PaypalController extends Controller {
 
     private function saveOrder($carrito) {
         $subtotal = 0;
+        $req = array();
+        $productos = array();
+        $cantidades = array();
+        $precios = array();
 
         foreach($carrito as $item){
             $subtotal += $item['precio'] * $item['cantidad'];
+            $productos[] = $item['id'];
+            $cantidades[] = (int) $item['cantidad'];
+            $precios[] = (double) $item['precio'];
         }
+        $req['productos'] = $productos;
+        $req['cantidades'] = $cantidades;
+        $req['precios'] = $precios;
+        $req['subtotal'] = (double) $subtotal;
+        $req['envio'] = 100.00;
+
+        $json = json_encode($req);
+        Log::info($json);
+        Log::info($this->token);
+
+        $ventaResponse = $this->httpHelper->postAuth("ventas", $req, $this->token);
+        $venta = $ventaResponse->json();
+        Log::info($venta);
 
         $order = Orden::create([
             'id_usuario' => \Auth::user()->id,
