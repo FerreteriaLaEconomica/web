@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('index');
 });
 
 // Authentication Routes...
@@ -65,4 +65,25 @@ Route::get('orden-detalle',[
     'middleware'=>'custom.auth',
     'as'=>'orden-detalle',
     'uses'=>'CarritoController@ordenDetalle'
+]);
+
+// Paypal
+
+//Enviamos nuestro pedido a PayPal
+Route::get('payment', array(
+    'as' => 'payment',
+    'uses' => 'PaypalController@postPayment'
+    )
+);
+
+// Después de realizar el pago Paypal redirecciona a esta ruta
+Route::get('payment/status', array(
+    'as' => 'payment.status',
+    'uses' => 'PaypalController@getPaymentStatus'
+    )
+);
+
+Route::get('/ver-factura', [
+    'middleware'=>'custom.auth',
+    'uses'=>'HomeController@verFactura'
 ]);

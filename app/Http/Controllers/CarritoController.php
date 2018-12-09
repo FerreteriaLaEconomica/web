@@ -85,12 +85,15 @@ class CarritoController extends Controller {
             $user = $request->session()->get('user');
             Auth::login($user);
         }
-        if(count(\Session::get('carrito'))<=0) return redirect()->route('/');
+        if(count(\Session::get('carrito'))<=0) return redirect()->route('index');
         $carrito = \Session::get('carrito');
 //        dd($carrito);
-        $total = $this->total();
+        $envio = 100.00;
+        $subtotal = $this->total() + $envio;
+        $taxes = bcdiv(bcmul(16, $subtotal, 2), 100, 2);
+        $total = $subtotal + $taxes;
 //        dd($total);
 
-        return view('orden-detalle', compact('carrito', 'total'));
+        return view('orden-detalle', compact('carrito', 'subtotal', 'total', 'envio', 'taxes'));
     }
 }
