@@ -3,10 +3,11 @@
 @section('content')
 
 <div class="container">
+  <h2>{{ $nombreSucursal }}</h2>
   <div class="row">
     <div class="col-2">
       @foreach($categorias as $categoria)
-        <a href="#">{{$categoria['nombre']}}</a><br>
+        <a href="{{ route('mostrar-categoria', ['idSucursal' => $idSucursal, 'categoria' => $categoria['nombre']]) }}">{{$categoria['nombre']}}</a><br>
       @endforeach
     </div>
     <div class="col-10">
@@ -20,6 +21,9 @@
               <div class="producto-info panel">
                 <img class="h-48" src="{{ $inventario['producto']['url_foto'] }}" alt="">
                 <h3><span class="label label-success">Precio: ${{number_format($inventario['producto']['precio_venta'], 2)}}</span></h3>
+                @if( $nombreCategoria == 'Descuentos')
+                  <p>Descuento: {{ $inventario['producto']['porcentaje_descuento'] }}</p>
+                @endif
                 <p>
                   <a href="{{ route('carrito-agregar', ['idSucursal' => $inventario['id_sucursal'], 'idProducto' => $inventario['producto']['id']])}}">
                     <button type="button" class="btn btn-outline-warning">AGREGAR AL CARRITO</button>

@@ -31,6 +31,11 @@ Route::get('sucursal/{idSucursal}',[
 	'uses'=> 'HomeController@showById'
 ])->name('home');
 
+Route::get('sucursal/{idSucursal}/categoria/{categoria}',[
+    'as'=>'mostrar-categoria',
+	'uses'=> 'HomeController@showByCategory'
+]);
+
 Route::get('sucursal/{idSucursal}/producto/{idProducto}',[
 	'as'=>'producto-detalles',
 	'uses'=>'HomeController@showProduct'

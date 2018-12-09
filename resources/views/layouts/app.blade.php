@@ -41,7 +41,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sucursalesNavbarDropdown">
                                     @foreach($sucursales as $sucursal)
-                                        <a class="dropdown-item" href="{{ route('home', ['idSucursal' => $sucursal['id']]) }}">
+                                        <a class="dropdown-item" href="{{ route('mostrar-categoria', ['idSucursal' => $sucursal['id'], 'categoria' => 'Descuentos']) }}">
                                             {{ $sucursal['nombre'] }}
                                         </a>
                                     @endforeach
