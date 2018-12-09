@@ -24,6 +24,7 @@ use App\Orden;
 use App\OrdenItem;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Log;
+use GuzzleHttp\Exception\ClientException;
 
 class PaypalController extends Controller {
     private $_api_context;
@@ -121,7 +122,13 @@ class PaypalController extends Controller {
 
         // add payment ID to session
         \Session::put('paypal_payment_id', $payment->getId());
-        $this->saveOrder(\Session::get('carrito'));
+
+        try {
+            $this->saveOrder(\Session::get('carrito'));
+        } catch (ClientException $e) {
+            return \Redirect::route('carrito')
+            ->with('error', 'No hay suficientes unidades en inventario.');
+        }
 
         if(isset($redirect_url)) {
             // redirect to paypal
