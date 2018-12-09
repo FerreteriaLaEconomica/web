@@ -36,8 +36,8 @@ class CustomRegistrationController extends Controller {
         $validatedData = $request->validate([
             'nombre' => 'required|max:255',
             'apellidos' => 'required|max:255',
-            'telefono' => 'required|size:10',
-            'email' => 'required',
+            'email' => 'required|max:255',
+            'direccion' => 'required|max:255',
             'password' => 'confirmed|min:5',
         ]);
 
@@ -51,8 +51,8 @@ class CustomRegistrationController extends Controller {
             $result = $this->httpHelper->post("users", [
                 'nombre' => $request->nombre,
                 'apellidos' => $request->apellidos,
-                'telefono' => $request->telefono,
                 'email' => $request->email,
+                'direccion' => $request->direccion,
                 'password' => $request->password,
                 'url_foto' => $urlFoto,
             ]);
@@ -67,8 +67,7 @@ class CustomRegistrationController extends Controller {
             $user->nombre = $body['nombre'];
             $user->apellidos = $body['apellidos'];
             $user->urlFoto = $body['url_foto'];
-            $user->nombre = $body['nombre'];
-            $user->telefono = $body['telefono'];
+            $user->direccion = $body['direccion'];
             $user->token = $authHeader;
 
             $request->session()->put('auth_token', $authHeader);

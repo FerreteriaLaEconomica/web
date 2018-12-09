@@ -53,8 +53,7 @@ class CustomAuthController extends Controller {
             $user->nombre = $body['nombre'];
             $user->apellidos = $body['apellidos'];
             $user->urlFoto = $body['url_foto'];
-            $user->nombre = $body['nombre'];
-            $user->telefono = $body['telefono'];
+            $user->direccion = $body['direccion'];
             $user->token = $authHeader;
 
             $request->session()->put('auth_token', $authHeader);
@@ -81,8 +80,10 @@ class CustomAuthController extends Controller {
      */
     public function logout(Request $request) {
         //remove authenticated from session and redirect to login
+        $request->session()->forget('paypal_payment_id');
         $request->session()->forget('auth_token');
         $request->session()->forget('user');
+        $request->session()->forget('carrito');
         return redirect()->route('login');
     }
 

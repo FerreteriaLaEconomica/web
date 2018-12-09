@@ -2,6 +2,14 @@
 
 return [
 
+    'firebase' => [
+        'api_key' => 'AIzaSyCU-J3UgwX_N_8O_T6PRKD4DCVqoBmc79I', // Only used for JS integration
+        'auth_domain' => 'images-smt.firebaseapp.com', // Only used for JS integration
+        'database_url' => 'https://images-smt.firebaseio.com',
+        'secret' => 'Eeztzr0c4jPu9yKxghppaNhM3VamWOYM4PXoSu4B',
+        'storage_bucket' => 'images-smt.appspot.com', // Only used for JS integration
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Third Party Services

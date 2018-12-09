@@ -50,14 +50,14 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="telefono" class="col-md-4 col-form-label text-md-right">{{ __('Teléfono') }}</label>
+                            <label for="direccion" class="col-md-4 col-form-label text-md-right">{{ __('Dirección') }}</label>
 
                             <div class="col-md-6">
-                                <input id="telefono" type="number" class="form-control{{ $errors->has('telefono') ? ' is-invalid' : '' }}" name="telefono" value="{{ old('telefono') }}" required autofocus>
+                                <input id="direccion" type="text" class="form-control{{ $errors->has('direccion') ? ' is-invalid' : '' }}" name="direccion" value="{{ old('direccion') }}" required autofocus>
 
-                                @if ($errors->has('telefono'))
+                                @if ($errors->has('direccion'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('telefono') }}</strong>
+                                        <strong>{{ $errors->first('direccion') }}</strong>
                                     </span>
                                 @endif
                             </div>

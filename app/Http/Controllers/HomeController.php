@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller {
     private $httpHelper;
@@ -64,5 +65,9 @@ class HomeController extends Controller {
         $data['categorias'] = $categorias;
 
         return view('home', compact('sucursales'), $data);
+    }
+
+    public function verFactura() {
+        return Storage::disk('public')->download('/invoices/'.Auth::user()->email.'.pdf');
     }
 }
