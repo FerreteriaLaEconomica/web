@@ -86,6 +86,18 @@ class HttpHelper {
     * @param $endpoint
     * @return mixed
     */
+    public function deleteAuth($endpoint, $token) {
+        $response = $this->guzzle->delete($this->cleanEndpoint($endpoint), [
+            'headers' => [
+                'Content-Type' => 'application/json; charset=UTF8',
+                'timeout' => 10,
+                'Authorization' => 'Bearer '.$token,
+            ],
+        ]);
+        //$body = json_decode($response->getBody());
+        return $response;
+    }
+
     public function delete($endpoint) {
         $response = $this->guzzle->delete($this->cleanEndpoint($endpoint), [
             'headers' => [

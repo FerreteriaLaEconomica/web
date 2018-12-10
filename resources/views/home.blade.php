@@ -3,18 +3,13 @@
 @section('content')
 
 <div class="container">
-  <h2>{{ $nombreSucursal }}</h2>
+  <h2 id="textoSucursal">{{ $nombreSucursal }}</h2>
   <div class="row">
-    <div class="col-2">
-      @foreach($categorias as $categoria)
-        <a href="{{ route('mostrar-categoria', ['idSucursal' => $idSucursal, 'categoria' => $categoria['nombre']]) }}">{{$categoria['nombre']}}</a><br>
-      @endforeach
-    </div>
-    <div class="col-10">
+    <div class="">
       <div class="content text-center">
-        <div class="ex1 px-16 py-1 flex flex-wrap justify-around">
+        <div class="ex1 px-4 py-1 flex flex-wrap justify-around">
           @foreach($results->items() as $inventario)
-            <div class="bump w-64 h-18 m-1 p-2 rounded shadow-md border bg-white white-panel">
+            <div class="bump w-64 h-18 m-1 p-2 rounded shadow-md border bg-white white-panel" id="home-panel">
               <h3>{{ $inventario['producto']["nombre"] }}</h3>
               <hr>
 
@@ -26,10 +21,10 @@
                 @endif
                 <p>
                   <a href="{{ route('carrito-agregar', ['idSucursal' => $inventario['id_sucursal'], 'idProducto' => $inventario['producto']['id']])}}">
-                    <button type="button" class="btn btn-outline-warning">AGREGAR AL CARRITO</button>
+                    <button type="button" class="btn btn-warning" id="home-button-add">AGREGAR AL CARRITO</button>
                   </a>
                   <a href="{{ route('producto-detalles', ['idSucursal' => $inventario['id_sucursal'], 'idProducto' => $inventario['producto']['id']]) }}">
-                    <button type="button" class="btn btn-outline-success">VER MÁS</button>
+                    <button type="button" class="btn btn-success" id="home-button-more">VER MÁS</button>
                   </a>
                 </p>
               </div>
@@ -39,7 +34,11 @@
           <br>
         </div>
       </div>
+      @include('secciones.modal-info')
+      <div class="flex justify-center">
       @include('pagination', ['paginator' => $results, 'link_limit' => 3])
+      </div>
+
     </div>
 
   </div>

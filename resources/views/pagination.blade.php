@@ -1,23 +1,23 @@
 @if(!$link_limit)
     @if ($paginator->lastPage() > 1)
     <ul class="pagination">
-        <li class="">
+        <li class="page-item">
             @if($paginator->currentPage() == 1)
-                <label class="disabled">First</label>
+                <a class="page-link disabled">First</a>
             @else
-            <a href="{{ $paginator->url(1) }}">First</a>
+            <a href="{{ $paginator->url(1) }}" class="page-link">First</a>
             @endif
         </li>
         @for ($i = 1; $i <= $paginator->lastPage(); $i++)
-            <li class="{{ ($paginator->currentPage() == $i) ? ' active' : '' }}">
-                <a href="{{ $paginator->url($i) }}">{{ $i }}</a>
+            <li class="page-item {{ ($paginator->currentPage() == $i) ? ' active' : '' }}">
+                <a class="page-link" href="{{ $paginator->url($i) }}">{{ $i }}</a>
             </li>
         @endfor
-        <li class="{{ ($paginator->currentPage() == $paginator->lastPage()) ? ' disabled' : '' }}">
+        <li class="page-item {{ ($paginator->currentPage() == $paginator->lastPage()) ? ' disabled' : '' }}">
             @if($paginator->currentPage() == $paginator->lastPage())
                 <label class="disabled">Next</label>
             @else
-            <a href="{{ $paginator->url($paginator->currentPage()+1) }}" >Next</a>
+            <a class="page-link" href="{{ $paginator->url($paginator->currentPage()+1) }}" >Next</a>
             @endif
         </li>
     </ul>
@@ -25,11 +25,11 @@
 @else
     @if ($paginator->lastPage() > 1)
         <ul class="pagination">
-            <li class="">
+            <li class="page-item">
                 @if($paginator->currentPage() == 1)
-                <label class="disabled">First</label>
+                <a class="page-link disabled">First</a>
                 @else
-                <a href="{{ $paginator->url(1) }}">First</a>
+                <a class="page-link" href="{{ $paginator->url(1) }}">First</a>
                 @endif
              </li>
              <?php
@@ -46,15 +46,15 @@
                 }
             ?>
             @for ($i = $from; $i <= $to; $i++)
-                    <li class="{{ ($paginator->currentPage() == $i) ? ' active' : '' }}">
-                        <a href="{{ $paginator->url($i) }}">{{ $i }}</a>
+                    <li class="page-item {{ ($paginator->currentPage() == $i) ? ' active' : '' }}">
+                        <a class="page-link" href="{{ $paginator->url($i) }}">{{ $i }}</a>
                     </li>
             @endfor
-            <li class="{{ ($paginator->currentPage() == $paginator->lastPage()) ? ' disabled' : '' }}">
+            <li class="page-item {{ ($paginator->currentPage() == $paginator->lastPage()) ? ' disabled' : '' }}">
                 @if($paginator->currentPage() == $paginator->lastPage())
-                <label class="disabled">Next</label>
+                <a class="page-link disabled">Next</a>
                 @else
-                <a href="{{ $paginator->url($paginator->currentPage() + 1) }}">Next</a>
+                <a class="page-link" href="{{ $paginator->url($paginator->currentPage() + 1) }}">Next</a>
                 @endif
             </li>
         </ul>

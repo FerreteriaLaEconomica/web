@@ -92,3 +92,10 @@ Route::get('/ver-factura', [
     'middleware'=>'custom.auth',
     'uses'=>'HomeController@verFactura'
 ]);
+
+Route::resource('admin/ordenes', 'Admin\OrdenesController')->middleware('admin.auth');
+Route::resource('admin/productos', 'Admin\ProductosController')->middleware('admin.auth');
+
+Route::get('admin', function() {
+    return view('admin.home');
+})->middleware('admin.auth');

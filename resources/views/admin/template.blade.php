@@ -19,14 +19,13 @@
     <!-- Styles -->
     <link rel="shortcut icon" href="{{asset('img/favicon.png')}}" type="image/x-icon">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('css/main.css')}}">
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    La Económica
+                <a class="navbar-brand" href="{{ url('/admin') }}">
+                    La Económica - Dashboard
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -36,44 +35,12 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        @if( ! empty($sucursales))
-                            <li class="nav-item dropdown">
-                                <a id="sucursalesNavbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    Sucursales <span class="caret"></span>
-                                </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sucursalesNavbarDropdown">
-                                    @foreach($sucursales as $sucursal)
-                                        <a class="dropdown-item" href="{{ route('mostrar-categoria', ['idSucursal' => $sucursal['id'], 'categoria' => 'Descuentos']) }}">
-                                            {{ $sucursal['nombre'] }}
-                                        </a>
-                                    @endforeach
-                                </div>
-                            </li>
-                        @endif
-                        @if( ! empty($categorias))
-                        <li class="nav-item dropdown">
-                            <a id="sucursalesNavbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                Categorias <span class="caret"></span>
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sucursalesNavbarDropdown">
-                                @foreach($categorias as $categoria)
-                                <a class="dropdown-item" href="{{ route('mostrar-categoria', ['idSucursal' => $idSucursal, 'categoria' => $categoria['nombre']]) }}">
-                                    {{ $categoria['nombre'] }}
-                                </a>
-                                @endforeach
-                            </div>
-                        </li>
-                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        <a class="nav-link infoSoftware" href="#" data-toggle="modal" data-target="#myModal">Conócenos</a>
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar Sesion') }}</a>
@@ -110,22 +77,6 @@
                 </div>
             </div>
         </nav>
-        @if (session('message'))
-        <div class="alert alert-primary" role="alert">
-            {{ session('message') }}
-        </div>
-        @endif
-        @if (session('error'))
-        <div class="alert alert-danger" role="alert">
-            {{ session('error') }}
-        </div>
-        @endif
-
-        @if (Session::has('message'))
-        <div class="alert alert-success" role="alert">
-            {{ Session::get('message') }} <a href="/ver-factura" class="btn btn-success">Ver factura</a>
-        </div>
-        @endif
 
         <main class="py-4">
             @yield('content')
