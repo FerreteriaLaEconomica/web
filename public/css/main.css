@@ -1,0 +1,66 @@
+body {
+    background-image: url('../img/background.jpg');
+    background-size: 100vw 100vh;
+    background-attachment: fixed;
+}
+
+img {
+    width: 50%;
+    max-width: 100%;
+    height: 50%;
+}
+
+.tabla-carrito {
+    background-color: #FFF;
+    border-radius: 15px;
+    padding: 2em 5em;
+}
+
+.page {
+    background-color: #FFF;
+    border-radius: 15px;
+    padding: 2em 5em;
+}
+
+#textoSucursal {
+    color: #FFF;
+    font-weight: bold;
+    font-size: 34px;
+    text-shadow: 1px 2px #000;
+}
+
+#home-button-add {
+    background-color: orange;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+#home-button-add:hover {
+    background-color: #ff704d;
+}
+
+#home-button-more {
+    background-color: green;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+#btn-button-more:hover {
+    background-color: #18f818;
+}
+
+#home-panel {
+    border: 1px solid #CCC;
+}
+
+#titleWindow {
+    font-size: 40px;
+    color: #FFF;
+    text-shadow: 1px 2px #000;
+}
+
+.producto-block {
+    background: #FFF;
+    border-radius: 1em;
+    padding: 1em;
+}
