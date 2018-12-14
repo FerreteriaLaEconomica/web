@@ -4,7 +4,7 @@
 @section('content')
 <div class="container text-center">
     <div class="page-header">
-        <h1 id="titleWindow"><i class="fa fa-shopping-cart"></i> Detalle del producto</h1>
+        <h1 id="titleWindow" class="mb-4"><i class="fa fa-shopping-cart"></i> Detalle del producto</h1>
     </div>
     <div class="row">
 
