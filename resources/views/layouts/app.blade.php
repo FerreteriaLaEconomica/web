@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -8,9 +8,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>La Económica - @yield('titulo')</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -20,8 +17,8 @@
     <link rel="shortcut icon" href="{{asset('img/favicon.png')}}" type="image/x-icon">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
-</head>
-<body>
+  </head>
+  <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
@@ -131,5 +128,10 @@
             @yield('content')
         </main>
     </div>
-</body>
+
+    @include('secciones.modal-info')
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+  </body>
 </html>

@@ -34,7 +34,6 @@
           <br>
         </div>
       </div>
-      @include('secciones.modal-info')
       <div class="flex justify-center">
       @include('pagination', ['paginator' => $results, 'link_limit' => 3])
       </div>
