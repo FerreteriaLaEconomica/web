@@ -12,10 +12,13 @@
         <div class="text-center w-1/3">
             <div class="flex flex-row justify-around">
                 <a href="{{ route('ordenes.index') }}" class="btn btn-warning">
-                    <i class="fa fa-list mr-1"></i>Ordenes
+                    <i class="fa fa-list mr-1"></i>Órdenes
                 </a>
                 <a href="{{ route('productos.index') }}" class="btn btn-warning">
                     <i class="fa fa-shopping-basket mr-1"></i>Productos
+                </a>
+                <a href="{{ route('categorias.index') }}" class="btn btn-warning">
+                    <i class="fa fa-align-left mr-1"></i>Categorías
                 </a>
             </div>
         </div>

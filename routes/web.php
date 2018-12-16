@@ -95,6 +95,7 @@ Route::get('/ver-factura', [
 
 Route::resource('admin/ordenes', 'Admin\OrdenesController')->middleware('admin.auth');
 Route::resource('admin/productos', 'Admin\ProductosController')->middleware('admin.auth');
+Route::resource('admin/categorias', 'Admin\CategoriasController')->middleware('admin.auth');
 
 Route::get('admin', function() {
     return view('admin.home');
