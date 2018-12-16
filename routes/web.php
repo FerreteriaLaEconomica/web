@@ -94,7 +94,17 @@ Route::get('/ver-factura', [
 ]);
 
 Route::resource('admin/ordenes', 'Admin\OrdenesController')->middleware('admin.auth');
+Route::get('admin-ordenes-reporte', array(
+    'as' => 'reporte.ordenes',
+    'uses' => 'ReportesController@ordenes'
+    )
+);
 Route::resource('admin/productos', 'Admin\ProductosController')->middleware('admin.auth');
+Route::get('admin-productos-reporte', array(
+    'as' => 'reporte.productos',
+    'uses' => 'ReportesController@productos'
+    )
+);
 Route::resource('admin/categorias', 'Admin\CategoriasController')->middleware('admin.auth');
 
 Route::get('admin', function() {

@@ -6,10 +6,13 @@
 
     <div class="flex justify-between items-center mx-16 my-4">
         <p class="opacity-75 uppercase tracking-wide font-bold text-lg"><i class="fa fa-shopping-basket"></i> Vista principal de Ordenes</p>
+        <a href="{{ route('reporte.ordenes') }}" class="btn btn-success">
+            Generar reporte <i class="fa fa-print ml-1"></i>
+        </a>
     </div>
 
     <div class="mx-16 my-8">
-     <table class="table table-striped table-hover table-bordered">
+     <table class="table table-striped table-hover table-bordered text-center">
         <thead>
             <tr>
                 <th scope="col">ID</th>
