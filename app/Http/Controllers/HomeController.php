@@ -28,7 +28,7 @@ class HomeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request) {
-        if ($request->session()->get('message')) {
+        if ($request->session()->get('messagecompra')) {
             return redirect()->route('mostrar-categoria', ['idSucursal' => 1, 'categoria' => 'Descuentos'])
                 ->with('messagecompra', 'Compra realizada de forma correcta');
         }
