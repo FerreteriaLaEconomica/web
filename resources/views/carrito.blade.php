@@ -17,6 +17,7 @@
                         <th>Producto</th>
                         <th>Precio</th>
                         <th>Cantidad</th>
+                        <th>Formato</th>
                         <th>Precio Total</th>
                         <th>Eliminar</th>
                         <th>
@@ -39,6 +40,7 @@
                             <a href="#" class="btn btn-warning btn-update-item" data-href="{{route('carrito-actualizar', $item['id'])}}" data-id="{{$item['id_producto']}}">
                                 <i class="fa fa-sync-alt"></i></a>
                         </td>
+                        <td>{{ $item['formato'] }}</td>
                         <td>{{number_format($item['precio'] * $item['cantidad'], 2)}}</td>
                         <td>
                             <a href="{{route('carrito-borrar', $item['id'])}}" class="btn btn-danger">

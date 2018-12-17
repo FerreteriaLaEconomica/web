@@ -186,7 +186,7 @@ class PaypalController extends Controller {
             $this->printInvoice($carrito);
 
             return \Redirect::route('index')
-                ->with('message', 'Compra realizada de forma correcta');
+                ->with('messagecompra', 'Compra realizada de forma correcta');
         }
         return \Redirect::route('index')
             ->with('error', 'La compra fue cancelada');

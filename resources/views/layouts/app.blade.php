@@ -118,10 +118,10 @@
         </div>
         @endif
 
-        @if (Session::has('message'))
-        <div class="alert alert-success" role="alert">
-            {{ Session::get('message') }} <a href="/ver-factura" class="btn btn-success">Ver factura</a>
-        </div>
+        @if (session('messagecompra'))
+          <div class="alert alert-success" role="alert">
+            {{ session('messagecompra') }} <a href="/ver-factura" class="btn btn-success">Ver factura</a>
+          </div>
         @endif
 
         <main class="py-4">

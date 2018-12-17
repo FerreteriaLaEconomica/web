@@ -57,6 +57,7 @@ class CarritoController extends Controller {
         $prod['nombre'] = $producto['producto']['nombre'];
         $prod['descripcion'] = $producto['producto']['descripcion'];
         $prod['precio'] = $producto['producto']['precio_venta'];
+        $prod['formato'] = $producto['producto']['formato'];
         $prod['url_foto'] = $producto['producto']['url_foto'];
         $prod['porcentaje_descuento'] = $producto['producto']['porcentaje_descuento'];
         $prod['codigo_barras'] = $producto['producto']['codigo_barras'];
