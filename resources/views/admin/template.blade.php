@@ -60,6 +60,9 @@
                                     <a class="dropdown-item" href="/admin">
                                         {{ __('Admin') }}
                                     </a>
+                                    <a class="dropdown-item" href="/apk/Ferreteria-Admin.apk">
+                                        Descargar apk
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
