@@ -17,10 +17,8 @@
                 <div class="text-center">
                     <img src="{{asset('img/favicon.png')}}" width="40">
                     <!--<i class="fa fa-check fa-4x mb-3 animated rotateIn"></i>-->
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit iusto nulla aperiam blanditiis
-                        ad consequatur in dolores culpa, dignissimos, eius non possimus fugiat. Esse ratione fuga,
-                        enim,
-                        ab officiis totam.</p>
+                    <h2>Tu proovedor confiable!</h2>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3715.8843373492996!2d-98.22896392233717!3d21.35505697052387!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d716af556fdb89%3A0xf59ddfcc5b4fd29d!2sEl+Veracruzano!5e0!3m2!1ses-419!2smx!4v1545158989502" class="w-full" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
                 </div>
             </div>
 
